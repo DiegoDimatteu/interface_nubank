@@ -1,0 +1,136 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
+import 'package:nubank/pages/home/widgets/item_menu.dart';
+
+class MenuApp extends StatelessWidget {
+  final double top;
+  final bool showMenu;
+
+  const MenuApp({Key? key, required this.top, required this.showMenu})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: top,
+      left: 0,
+      right: 0,
+      child: AnimatedOpacity(
+        duration: Duration(milliseconds: 100),
+        opacity: showMenu ? 1 : 0,
+        child: Container(
+          //color: Colors.red,
+          height: MediaQuery.of(context).size.height * 0.65,
+          child: Column(
+            children: <Widget>[
+              Image.network(
+                'https://webmobtuts.com/wp-content/uploads/2019/02/QR_code_for_mobile_English_Wikipedia.svg_.png',
+                height: 120,
+                color: Colors.white,
+              ),
+              const Text.rich(
+                TextSpan(
+                  text: 'Banco ',
+                  children: [
+                    TextSpan(
+                        text: '260 - Nu Pagamentos S.A',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                style: TextStyle(fontSize: 12),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              const Text.rich(
+                TextSpan(
+                  text: 'Agência ',
+                  children: [
+                    TextSpan(
+                        text: '0001',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                style: TextStyle(fontSize: 12),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              const Text.rich(
+                TextSpan(
+                  text: 'Conta ',
+                  children: [
+                    TextSpan(
+                        text: '0000000-0',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                style: TextStyle(fontSize: 12),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Column(
+                    children: const <Widget>[
+                      ItemMenu(
+                        icon: Icons.info_outline,
+                        text: 'Me ajuda',
+                      ),
+                      ItemMenu(
+                        icon: Icons.person_outline,
+                        text: 'Perfil',
+                      ),
+                      ItemMenu(
+                        icon: Icons.settings_cell,
+                        text: 'Configurar Conta',
+                      ),
+                      ItemMenu(
+                        icon: Icons.credit_card,
+                        text: 'Configurar Cartão',
+                      ),
+                      ItemMenu(
+                        icon: Icons.account_balance_wallet_outlined,
+                        text: 'Pedir Conta PJ',
+                      ),
+                      ItemMenu(
+                        icon: Icons.settings_outlined,
+                        text: 'Configurações do App',
+                      ),
+                      SizedBox(
+                        height: 35,
+                      ),
+                      ItemMenu(
+                        icon: Icons.exit_to_app,
+                        text: 'SAIR DO APP',
+                      ),
+
+                      /*RaisedButton(
+                        color: Colors.purple[800],
+                        highlightColor: Colors.transparent,
+                        elevation: 0,
+                        disabledElevation: 0,
+                        focusElevation: 0,
+                        highlightElevation: 0,
+                        hoverElevation: 0,
+                        splashColor: Colors.purple[900],
+                        child: Text(
+                          'SAIR DO APP',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        nPressed: () {},
+                      ),*/
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
